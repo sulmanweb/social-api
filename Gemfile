@@ -24,6 +24,8 @@ gem 'rack-cors', '~> 1.1'
 gem 'graphql', '~> 1.9', '>= 1.9.16'
 gem 'graphiql-rails', '~> 1.7'
 gem 'sprockets', '~> 3.7', '>= 3.7.2'
+# To generate fake data
+gem 'faker', '~> 2.8', '>= 2.8.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

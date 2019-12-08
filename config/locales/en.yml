@@ -1,2 +1,10 @@
 en:
   app_name: "Social Network"
+
+  errors:
+    models:
+      user:
+        username_format: "only lower-case alphabets, numeric and underscore and hyphens allowed."
+        email_format: "is not valid email address."
+        password_format: "must be 8 to 72 characters must contain a number."
+        only_alphabets: "must contain only alphabets"

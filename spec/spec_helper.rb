@@ -49,6 +49,7 @@ RSpec.configure do |config|
 
     # and disable callbacks
     # Searchkick.disable_callbacks
+    Faker::UniqueGenerator.clear
   end
 
   # config.around(:each, search: true) do |example|
