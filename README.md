@@ -11,7 +11,7 @@ made by [@sulmanweb](https://twitter.com/sulmanweb)
 ## ToDos
 
 - [x] Open access to API global for any front end
-- [ ] Init GraphQL with UI
+- [x] Init GraphQL with UI
 - [ ] Add Unit Testing Suite RSpec
 - [ ] Add Users and authentication using JWT
 - [ ] Add Posts for Users
@@ -30,6 +30,7 @@ made by [@sulmanweb](https://twitter.com/sulmanweb)
 - run `rails db:migrate` to migrate the latest schema.
 - run `rails db:seed` to seed initial data.
 - run `rails s` to run server
+- go to [http://localhost:3000/graphiql](http://localhost:3000/graphiql) for graphql ui with documentation
 
 ## To Contribute
 
