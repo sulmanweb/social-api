@@ -10,6 +10,8 @@ made by [@sulmanweb](https://twitter.com/sulmanweb)
 
 ## ToDos
 
+- [x] Open access to API global for any front end
+- [ ] Init GraphQL with UI
 - [ ] Add Unit Testing Suite RSpec
 - [ ] Add Users and authentication using JWT
 - [ ] Add Posts for Users
@@ -29,3 +31,6 @@ made by [@sulmanweb](https://twitter.com/sulmanweb)
 - run `rails db:seed` to seed initial data.
 - run `rails s` to run server
 
+## To Contribute
+
+- Fork the repo and create new branch of the feature or issue and create Pull Request of branch to merge in master.
