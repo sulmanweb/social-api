@@ -2,6 +2,9 @@ class User < ApplicationRecord
   ## ENTITIES
   has_secure_password
 
+  ## RELATIONSHIPS
+  has_many :sessions, dependent: :destroy
+
   ## VALIDATIONS
   validates :username, presence: true, uniqueness: true, length: {in: 5..20}, format: {with: /\A[a-z0-9]+(?:[_-]?[a-z0-9])*\z/, message: "errors.models.user.username_format"}
   validates :email, presence: true, uniqueness: true, format: {with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i, message: I18n.t("errors.models.user.email_format")}
