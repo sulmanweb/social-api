@@ -1,6 +1,5 @@
-module Mutations
-  class BaseMutation < GraphQL::Schema::Mutation
-    null false
+module Queries
+  class BaseQuery < GraphQL::Schema::Resolver
 
     # The method authenticates the token
     def authenticate_user

@@ -42,5 +42,6 @@ module SocialApi
                        routing_specs: false,
                        controller_specs: false
     end
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
   end
 end
