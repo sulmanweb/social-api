@@ -4,7 +4,7 @@ class Session < ApplicationRecord
 
   ## VALIDATIONS
   validates :token, presence: true, uniqueness: true
-  validates :status, acceptance: true
+  validates :status, acceptance: true, on: :create
 
   ## SCOPES
   scope :active, -> { where status: true }

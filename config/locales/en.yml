@@ -5,6 +5,7 @@ en:
     auth:
       token_not_created: "There was a problem in server authenticating you. Please try again later."
       unauthenticated: "You must be signed in to perform this method."
+      invalid_credentials: "Incorrect credentials has been entered."
     models:
       user:
         username_format: "only lower-case alphabets, numeric and underscore and hyphens allowed."

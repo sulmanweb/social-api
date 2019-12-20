@@ -1,28 +1,31 @@
 module Mutations
   module Auth
-    class SignUp < BaseMutation
+    class SignIn < BaseMutation
       require 'json_web_token'
 
-      description "Signs Up the user into the system"
+      description "Signs In the user into the system"
 
       # Inputs
-      argument :input, Types::Inputs::SignUpInputType, required: true
+      argument :input, Types::Inputs::SignInInputType, required: true
 
       # Outputs
       field :token, String, null: false
       field :user, Types::UserType, null: false
 
       def resolve(input: nil)
-        user = User.new(username: input.username, email: input.email, password: input.password)
+        user = User.find_by(username: input.auth)
+        if user.nil?
+          user = User.find_by(email: input.auth)
+        end
 
-        if user.save
+        if user && user.authenticate(input.password)
           session = Session.create!(user: user)
           token = nil
           token = JsonWebToken.encode({user_id: user.id, token: session.token}) if session.present?
           if token
             return {user: user, token: token}
           else
-            GraphQL::ExecutionError.new(I18n.t('errors.auth.token_not_created'))
+            GraphQL::ExecutionError.new(I18n.t('errors.auth.invalid_credentials'))
           end
         else
           GraphQL::ExecutionError.new(user.errors.full_messages.join(', '))

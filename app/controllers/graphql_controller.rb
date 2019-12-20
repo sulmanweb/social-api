@@ -12,6 +12,7 @@ class GraphqlController < ApplicationController
     context = {
         # Query context goes here, for example:
         current_user: current_user,
+        decoded_token: decoded_token
     }
     result = SocialApiSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
@@ -25,7 +26,7 @@ class GraphqlController < ApplicationController
     if decoded_token
       data = decoded_token
       user = User.find_by_id(data[:user_id])
-      if user
+      if !user.nil? && !user.sessions.where(status: true).find_by(token: data[:token]).nil?
         @current_user ||= user
       end
     end
