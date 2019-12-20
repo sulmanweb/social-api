@@ -25,8 +25,9 @@ class GraphqlController < ApplicationController
     @current_user = nil
     if decoded_token
       data = decoded_token
-      user = User.find_by_id(data[:user_id])
-      if !user.nil? && !user.sessions.where(status: true).find_by(token: data[:token]).nil?
+      p data[:user_id].present?
+      user = User.find_by_id(data[:user_id]) if data[:user_id].present?
+      if data[:user_id].present? && data[:token].present? && !user.nil? && !user.sessions.where(status: true).find_by(token: data[:token]).nil?
         @current_user ||= user
       end
     end
@@ -39,9 +40,11 @@ class GraphqlController < ApplicationController
       begin
         @decoded_token ||= JsonWebToken.decode(header)
       rescue ActiveRecord::RecordNotFound => e
-        return GraphQL::ExecutionError.new(e.message)
+        raise GraphQL::ExecutionError.new(e.message)
       rescue JWT::DecodeError => e
-        return GraphQL::ExecutionError.new(e.message)
+        raise GraphQL::ExecutionError.new(e.message)
+      rescue StandardError => e
+        raise GraphQL::ExecutionError.new(e.message)
       end
     end
   end

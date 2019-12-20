@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
   ## RELATIONSHIPS
   has_many :sessions, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   ## VALIDATIONS
   validates :username, presence: true, uniqueness: true, length: {in: 5..20}, format: {with: /\A[a-z0-9]+(?:[_-]?[a-z0-9])*\z/, message: "errors.models.user.username_format"}

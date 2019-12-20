@@ -22,10 +22,10 @@ module Mutations
           if token
             return {user: user, token: token}
           else
-            GraphQL::ExecutionError.new(I18n.t('errors.auth.token_not_created'))
+            raise GraphQL::ExecutionError.new(I18n.t('errors.auth.token_not_created'))
           end
         else
-          GraphQL::ExecutionError.new(user.errors.full_messages.join(', '))
+          raise GraphQL::ExecutionError.new(user.errors.full_messages.join(', '))
         end
       end
     end

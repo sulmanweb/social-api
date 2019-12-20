@@ -25,10 +25,10 @@ module Mutations
           if token
             return {user: user, token: token}
           else
-            GraphQL::ExecutionError.new(I18n.t('errors.auth.invalid_credentials'))
+            raise GraphQL::ExecutionError.new(I18n.t('errors.auth.invalid_credentials'))
           end
         else
-          GraphQL::ExecutionError.new(user.errors.full_messages.join(', '))
+          raise GraphQL::ExecutionError.new(user.errors.full_messages.join(', '))
         end
       end
     end
