@@ -22,7 +22,7 @@ module Queries
       end
 
       def authorize(context, post)
-        if post.user != context[:current_user]
+        if post.user != context[:current_user] && post.status == false
           raise GraphQL::ExecutionError.new(I18n.t('errors.unauthorized'))
         end
       end

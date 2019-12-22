@@ -8,5 +8,9 @@ module Types
     # posts
     field :create_post, mutation: Mutations::Posts::CreatePost
     field :update_post, mutation: Mutations::Posts::UpdatePost
+
+    # users
+    field :follow_user, mutation: Mutations::Users::FollowUser
+    field :un_follow_user, mutation: Mutations::Users::UnFollowUser
   end
 end

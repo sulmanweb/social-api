@@ -17,7 +17,6 @@ module Mutations
         set_post(id)
         authorize(context, @post)
         if @post.update(input.to_h)
-          p input.to_h
           {post: @post}
         else
           raise GraphQL::ExecutionError.new(post.errors.full_messages.join(","))
