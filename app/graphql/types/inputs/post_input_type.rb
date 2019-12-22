@@ -5,6 +5,7 @@ module Types
       # graphql_name 'SignUpInputType'
 
       argument :content, String, required: true
+      argument :status, Boolean, required: true
     end
   end
 end

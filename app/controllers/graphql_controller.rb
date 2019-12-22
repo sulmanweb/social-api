@@ -25,7 +25,6 @@ class GraphqlController < ApplicationController
     @current_user = nil
     if decoded_token
       data = decoded_token
-      p data[:user_id].present?
       user = User.find_by_id(data[:user_id]) if data[:user_id].present?
       if data[:user_id].present? && data[:token].present? && !user.nil? && !user.sessions.where(status: true).find_by(token: data[:token]).nil?
         @current_user ||= user

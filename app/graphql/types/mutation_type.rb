@@ -7,5 +7,6 @@ module Types
 
     # posts
     field :create_post, mutation: Mutations::Posts::CreatePost
+    field :update_post, mutation: Mutations::Posts::UpdatePost
   end
 end

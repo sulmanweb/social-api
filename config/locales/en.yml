@@ -2,6 +2,8 @@ en:
   app_name: "Social Network"
 
   errors:
+    not_found: "Sorry the record you requested could not be found."
+    unauthorized: "Sorry you are not allowed to perform this action."
     auth:
       token_not_created: "There was a problem in server authenticating you. Please try again later."
       unauthenticated: "You must be signed in to perform this method."
