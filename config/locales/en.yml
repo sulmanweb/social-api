@@ -14,3 +14,5 @@ en:
         email_format: "is not valid email address."
         password_format: "must be 8 to 72 characters must contain a number."
         only_alphabets: "must contain only alphabets"
+      followships:
+        same_user: "You can not follow yourself"

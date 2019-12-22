@@ -5,6 +5,22 @@ class User < ApplicationRecord
   ## RELATIONSHIPS
   has_many :sessions, dependent: :destroy
   has_many :posts, dependent: :destroy
+  # A follower is a user than follows another user.
+  has_many :follower_followships,
+           class_name: "Followship",
+           foreign_key: "follower_id",
+           dependent: :destroy
+  # We reference the users that the user follows through the join
+  # table.
+  has_many :followees, through: :follower_followships
+  # A followee is a user that is followed by another user.
+  has_many :followee_followships,
+           class_name: "Followship",
+           foreign_key: "followee_id",
+           dependent: :destroy
+  # To see the users that follow a user, we reference them through the join
+  # table.
+  has_many :followers, through: :followee_followships
 
   ## VALIDATIONS
   validates :username, presence: true, uniqueness: true, length: {in: 5..20}, format: {with: /\A[a-z0-9]+(?:[_-]?[a-z0-9])*\z/, message: "errors.models.user.username_format"}
@@ -15,6 +31,15 @@ class User < ApplicationRecord
 
   ## CALLBACKS
   before_validation :downcase_email!
+
+  ## METHODS
+  def follow(user)
+    followees << user
+  end
+
+  def unfollow(followed_user)
+    followees.delete followed_user
+  end
 
   ## QUESTIONS
 

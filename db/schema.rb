@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_20_191033) do
+ActiveRecord::Schema.define(version: 2019_12_22_182219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "followships", force: :cascade do |t|
+    t.bigint "follower_id"
+    t.bigint "followee_id"
+    t.boolean "status", default: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["followee_id"], name: "index_followships_on_followee_id"
+    t.index ["follower_id", "followee_id"], name: "index_followships_on_follower_id_and_followee_id", unique: true
+    t.index ["follower_id"], name: "index_followships_on_follower_id"
+    t.index ["status"], name: "index_followships_on_status"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.bigint "user_id", null: false
