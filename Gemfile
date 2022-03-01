@@ -12,7 +12,7 @@ gem 'puma', '~> 4.3', '>= 4.3.1'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1', '>= 3.1.13'
 # Use Active Storage variant
-gem 'image_processing', '~> 1.9', '>= 1.9.3'
+gem 'image_processing', '~> 1.12'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '~> 1.4', '>= 1.4.5', require: false
